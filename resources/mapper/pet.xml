@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ysi.spring.pet">
+<!--  pet 부분-->
+ 
+<select id="selectAll" resultType="PetDTO" >
+select * from petmember
+</select>
+
+<insert id="insert" parameterType="PetDTO" >
+insert into petmember (name,breed,gender,age,psize)
+ values (#{name},#{breed},#{gender},#{age},#{psize})
+</insert>
+
+<update id="update" parameterType="PetDTO">
+update petmember set name = #{name}, breed = #{breed}, gender = #{gender},age =#{age}, psize = #{psize}
+where name = #{name}
+</update>
+
+
+<select id="selectDetail" resultType="PetDTO" >
+select * from petmember
+ where name = #{name}
+</select>
+
+
+<delete id="delete" parameterType="PetDTO">
+delete from petmember
+where name = #{name}
+</delete>
+
+</mapper>

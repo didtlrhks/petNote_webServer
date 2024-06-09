@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ysi.spring.dept">
+<!--  member 부분-->
+<select id="login" parameterType="MemberDTO" resultType="MemberDTO">
+select * from member2
+ where id = #{id} and password = #{password}
+</select>
+
+<insert id="memberinsert" parameterType="MemberDTO">
+insert into member2 (id,name,password,gender,age,birthday,email,num)
+values (#{id},#{name},#{password},#{gender},#{age},#{birthday},#{email},#{num})
+</insert>
+
+
+
+<select id="idcheck" parameterType="MemberDTO" resultType="MemberDTO">
+select * from member2
+ where name = #{name} and email = #{email}
+</select>
+
+<select id="id" parameterType="java.lang.String" resultType="MemberDTO">
+select * from member2
+ where id = #{id}
+</select>
+
+<select id="passwordcheck" parameterType="MemberDTO" resultType="MemberDTO">
+select * from member2
+ where id = #{id} and email = #{email}
+</select>
+ 
+</mapper>

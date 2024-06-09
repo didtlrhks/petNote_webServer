@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		<context:annotation-config></context:annotation-config>
+<!-- 		<bean class="ysi.spring.ioc.TestDTO" id="testDTO">
+		<property name="name" value="홍길동"></property>
+		<property name="age" value="33"></property>
+		</bean>
+		
+		<bean class="ysi.spring.ioc.TestDTO" id="testDTO1">
+		<property name="name" value="전우치"></property>
+		<property name="age" value="33"></property>
+		</bean>
+		
+		<bean class="ysi.spring.ioc.TestService" id="testService"></bean> -->
+		
+	<!--// 	<bean class="ysi.spring.ioc.MessageKr" id ="messageKr"></bean>
+		<bean class="ysi.spring.ioc.MessageEn" id ="messageEn"></bean>
+		
+		<bean class="ysi.spring.ioc.MessageService" id ="messageService"></bean>
+		 -->
+		 
+
+		 	 <context:component-scan base-package="ysi.spring.aop"></context:component-scan>
+		 	
+		 <aop:config>
+		
+		 <aop:pointcut expression="execution(public * call*(..))" id="tocall"/>
+		 <aop:pointcut expression="execution(public * say*(..))" id="tocall"/>
+		
+		 <aop:aspect ref="arroundAdvice">
+		 
+		 <aop:before method="after" pointcut-ref="tocall"/>
+		 <aop:before method="arround" pointcut-ref="tocall"/>
+		 </aop:aspect>
+		
+		 </aop:config>
+</beans>
+
